@@ -1,0 +1,29 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+.flex
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container
+{
+    display: grid;
+    background-color: antiquewhite;
+    grid-template-columns: repeat(2,1fr);
+    width: 100vw;
+    height: 100vh;
+}
+.signInFromArea
+{
+    background-color: aqua;
+}
+.signUpFromArea
+{
+    background-color: cadetblue;
+}

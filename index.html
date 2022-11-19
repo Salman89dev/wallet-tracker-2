@@ -5,10 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallet tracker</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <form action="">
-        <input type="text" name="" id="">
-    </form>
+
+
+
+    <div class="container">
+
+        <div class="signInFromArea flex">
+         <form class="signInFrom">
+            <input class="signInEmail" type="text" placeholder="Enter Email">
+            <input class="signInPassword" type="text" placeholder="Enter Password">
+            <button type="submit">Submit</button>
+         </form>
+        </div>
+
+        <div class="signUpFromArea flex" >
+            <form class="signUpFrom">
+                <input class="signUpName" type="text" placeholder="Enter Name">
+                <input class="signUpEmail" type="text" placeholder="Enter Email">
+                <input class="signUpPassword" type="text" placeholder="Enter Password">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js"></script>
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-firestore.js"></script>
+    
+    
+    <script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAUK7BOFfSbMnsSC4752NK-6msAmZCsBgU",
+        authDomain: "wallet-tracker-new.firebaseapp.com",
+        projectId: "wallet-tracker-new",
+        storageBucket: "wallet-tracker-new.appspot.com",
+        messagingSenderId: "85854305790",
+        appId: "1:85854305790:web:7e07ba50a77898486014af"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script src="js/index.js"></script>
+
 </body>
 </html>
