@@ -1,10 +1,8 @@
 var auth=firebase.auth();
 var firestore=firebase.firestore();
-
-
 let signInFrom=document.querySelector(".signInFrom")
 let signUpFrom=document.querySelector(".signUpFrom")
-
+let googleSign=document.querySelector(".googleSign")
 
 let signInFormSubmission=async(e)=>
 {
@@ -18,14 +16,45 @@ let signInFormSubmission=async(e)=>
             let {user:{uid}}=await auth.signInWithEmailAndPassword(email,password)
     
             let userInfo=await firestore.collection("user").doc(uid).get();
-            console.log(userInfo.data())
+            location.assign(`dashboard.html#${uid}`)
         }
+
 
     } catch (error) {
         console.log(error.message)
     }
 
 }
+
+var googleSignInFunction=async()=>
+{
+    try {
+        var googleProvider = new firebase.auth.GoogleAuthProvider();
+        let {user:{uid,displayName,email},additionalUserInfo:{isNewUser}}=await firebase.auth().signInWithPopup(googleProvider); 
+        
+
+
+        if(isNewUser)
+        {
+            let userInfo=
+            {
+                displayName,
+                email,
+                createdAt:new Date(),
+            }
+
+            await firestore.collection("user").doc(uid).set(userInfo)
+            location.assign(`dashboard.html#${uid}`)
+        }
+        else{
+            location.assign(`dashboard.html#${uid}`)
+        }
+
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
 
 
 let signUpFormSubmission=async(e)=>
@@ -45,7 +74,8 @@ let signUpFormSubmission=async(e)=>
             }
 
             await firestore.collection("user").doc(uid).set(userInfo);
-            console.log("done")
+            location.assign(`dashboard.html#${uid}`)
+
 
         }
     } catch (error) {
@@ -56,8 +86,5 @@ let signUpFormSubmission=async(e)=>
 
 signUpFrom.addEventListener("submit",(e)=>signUpFormSubmission(e))
 signInFrom.addEventListener("submit",(e)=>signInFormSubmission(e))
-
-
-
-
+googleSign.addEventListener("click",googleSignInFunction)
 
